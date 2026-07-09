@@ -10,7 +10,7 @@ const weather = ref(null);
 
 
 async function getWeather() {
-  const response = await fetch("http://127.0.0.1:8000/api/weather/");
+  const response = await fetch(`http://127.0.0.1:8000/api/weather/?city=${city.value}`);
   weather.value = await response.json();
 }
 </script>
@@ -26,9 +26,11 @@ async function getWeather() {
     <button @click="getWeather">Submit</button>
 
     <div v-if="weather">
-      <p>City: {{ city }}</p>
-      <!--p>Temperature: {{ weather.temperature }}°C</p-->
-      <p>Title: {{ weather.title }}</p>
+      <p>City: {{ weather.city }}</p>
+      <p>Temperature: {{ weather.temperature }} °C</p>
+      <p>Wind speed: {{ weather.wind_speed }} km/h</p>
+      <p>Time: {{ weather.time }}</p>
+      
     </div>
 
     <div v-else>
