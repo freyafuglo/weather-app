@@ -48,7 +48,7 @@ def weather(request):
 
     weather_data = get_weather(lat, lon)
 
-    print(weather_data)
+    #print(weather_data)
 
 
     return JsonResponse({
